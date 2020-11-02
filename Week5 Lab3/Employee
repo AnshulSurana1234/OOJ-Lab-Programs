@@ -1,0 +1,57 @@
+import java.util.Scanner;
+class Employee
+{
+	int empid,empnohrs,empbasic,emphra,empda,empit;
+	String empname;
+	double empgross;
+	
+	void getdata()
+	{
+		Scanner get=new Scanner (System.in);
+		System.out.println("ID:");
+		empid=get.nextInt();
+		System.out.println("HOURS:");
+		empnohrs=get.nextInt();
+		System.out.println("BASIC:");
+		empbasic=get.nextInt();
+		System.out.println("HRA:(%)");
+		emphra=get.nextInt();
+		System.out.println("DA:(%)");
+		empda=get.nextInt();
+		System.out.println("IT:(%)");
+		empit=get.nextInt();
+		
+	}
+	void gross()
+	{
+		empgross=empbasic+empbasic*(emphra+empda-empit)/100;
+	}
+	void updategross()
+	{
+		empgross=(empnohrs-200)*100+empgross;
+	}
+	void display()
+	{
+		System.out.println("\nID:"+empid);
+		System.out.println("HOURS:"+empnohrs);
+		System.out.println("BASIC:"+empbasic);
+		System.out.println("HRA:"+emphra);
+		System.out.println("DA:"+empda);
+		System.out.println("IT:"+empit);
+		gross();
+		System.out.println("GROSS:"+empgross);
+		updategross();
+		System.out.println("UPDATED GROSS:"+empgross);
+		
+	}
+}
+class EmployeeMain
+{
+	public static void main(String args[])
+	{
+		Scanner get=new Scanner (System.in);
+		Employee e=new Employee();
+		e.getdata();
+		e.display();
+	}
+}
