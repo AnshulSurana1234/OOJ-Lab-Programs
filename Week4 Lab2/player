@@ -1,0 +1,67 @@
+import java.util.Scanner;
+class player
+{
+	int id;
+	String name;
+	int scores[];
+	int no_matches_played;
+	
+	void player()
+	{
+		id=0;
+		name="unkown";
+		scores=new int[1];
+		scores[0]=1;
+		no_matches_played=0;
+	}
+	void getplayer()
+	{
+		Scanner get =new Scanner (System.in);
+		System.out.println("Enter |nId:");
+		id=get.nextInt();
+		System.out.println("Name:");
+		name=get.next();
+		System.out.println("No_matches_played");
+		no_matches_played=get.nextInt();
+		scores=new int [no_matches_played];
+		System.out.println("Scores:");
+		for(int i=0;i<no_matches_played;i++)
+			scores[i]=get.nextInt();
+	}
+	void calcavg()
+	{
+		int sum=0;
+		double avg;
+		if(no_matches_played>0)
+		{
+			for(int i=0;i<no_matches_played;i++)
+				sum=sum+scores[i];
+			avg=sum/no_matches_played;
+			System.out.println("AVERAGE SCORE :"+avg);
+			
+		}
+		else 
+			System.out.println("AVERAGE SCORE: 0");
+	}
+	void display()
+	{
+		System.out.println("\nID:"+id);
+		System.out.println("NAME:"+name);
+		System.out.println("NO OF MATCHES:"+no_matches_played);
+		System.out.println("SCORES:");
+		for(int i=0;i<no_matches_played;i++)
+			System.out.println(scores[i]+"\t");
+		calcavg();
+		
+	}
+}
+class PlayerMain
+{
+	public static void main(String args[])
+	{
+		System.out.println("Enter the details of the player:\n");
+		player p=new player();
+		p.getplayer();
+		p.display();
+	}
+}
