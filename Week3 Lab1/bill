@@ -1,0 +1,35 @@
+import java.util.Scanner ;
+ class itembill
+ {
+	 public static void main(String args[])
+	 {
+		 int x;
+		 double tb=0,fb;
+		 Scanner get =new Scanner(System.in);
+		 System.out.println("Enter the no of items bought:");
+		 x=get.nextInt();
+		 double rate_of[]=new double[x];
+		 int quantity[]=new int[x];
+		 System.out.println("\nEnter the Rate of item and Quantity purchased:\n ");
+		 for (int i=0;i<x;i++)
+		 {
+			 System.out.println("Item"+(i+1)+":");
+			 System.out.println("\nRate:");rate_of [i]=get.nextFloat();
+			 System.out.println("Quantity :");quantity[i]=get.nextInt();
+			 tb=tb+rate_of[i]*quantity[i];
+			 
+		 }
+		 if(tb>=10000)
+			 fb=tb*0.95;
+		 else 
+			 if(tb>=7500)
+				 fb=tb*0.97;
+			 else 
+				 if(tb>=5000)
+					 fb=tb*0.98;
+				 else
+					 fb=tb;
+				 System.out.println("Total bill:"+tb+"\nFinal Bill:"+fb);
+				 
+	 }
+ }
