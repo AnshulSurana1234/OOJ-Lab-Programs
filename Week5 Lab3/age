@@ -1,0 +1,54 @@
+import java.util.Scanner ;
+class age
+{
+	int yr,mn;
+	int getyr()
+	{
+		return yr;
+	}
+	int getmn()
+	{return mn;}
+	void getdata()
+	{
+		Scanner get=new Scanner (System.in);
+		System.out.println("Year:");
+		yr=get.nextInt();
+		System.out.println("Month:(PS:less than 12");
+		mn=get.nextInt();
+	}	
+	
+}
+class ageMain
+{
+	public static void main(String args[])
+	{
+		Scanner get=new Scanner (System.in);
+		age a1=new age();
+		age a2=new age();
+	    System.out.println("Enter year and month\nPerson1:");
+		a1.getdata();
+		System.out.println("Person 2:");
+		a2.getdata();
+		
+		if(a1.getyr()>a2.getyr())
+		{
+			System.out.println("Person 1 is elder ");
+		}
+		else
+		{
+			if(a1.getmn()>a2.getmn())
+			{
+				System.out.println("Person 1 is elder ");
+			}
+			else
+			{
+			  if(a2.getmn()>a1.getmn())
+			  {
+				  System.out.println("Person 2 is elder ");
+			  }				  
+			  else 
+				  System.out.println("Both were born in same year and same month ");
+			}
+		}
+	}
+}
