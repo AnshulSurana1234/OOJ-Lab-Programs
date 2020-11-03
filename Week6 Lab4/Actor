@@ -1,0 +1,61 @@
+import java .util.Scanner ;
+class Actor
+{
+	int id,no_of_movies,no_of_years_exp;
+	double avg_performance;
+	String name;
+	
+	void getd()
+	{
+		Scanner get=new Scanner (System.in);
+		System.out.println("\nName:");
+		name=get.next();
+		System.out.println("ID:");
+		id=get.nextInt();
+		System.out.println("No of movies:");
+		no_of_movies=get.nextInt();
+		System.out.println("Years of Experience:");
+		no_of_years_exp=get.nextInt();
+	}
+	double avg_exp()
+	{
+		avg_performance =(double)no_of_movies/no_of_years_exp;
+		return avg_performance;
+	}
+	void disp()
+	{
+		System.out.println("\nName:"+name);
+		System.out.println("Id:"+id);
+		System.out.println("No of Movies:"+no_of_movies);
+		System.out.println("Yeras of Experience:"+no_of_years_exp);
+		System.out.println("Average Performance:"+avg_performance);
+	}
+}
+class ActorMain
+{
+	public static void main(String args[])
+	{
+		Scanner get=new Scanner (System.in);
+		int n,c=-1;
+		double max=0;
+		System.out.println("Enter the no.of actor:");
+		n=get.nextInt();
+		Actor a[]=new Actor[n];
+		for(int i=0;i<n;i++)
+		{
+			a[i]=new Actor();
+			System.out.println("Actor"+(i+1));
+			a[i].getd();
+			if(max<a[i].avg_exp())
+			{
+				max =a[i].avg_exp();
+				c=i;
+			}
+		}
+			if(c!=-1)
+				a[c].disp();
+			else 
+				System.out.println("No Actor has experience");
+		
+	}
+}
