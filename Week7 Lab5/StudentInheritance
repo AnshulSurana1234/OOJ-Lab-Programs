@@ -1,1 +1,136 @@
 
+import java .util.Scanner ;
+class Student
+{
+	String usn,name;
+	int sem;
+	Scanner get=new Scanner (System.in);
+	void getStudInfo(int m)
+	{
+		System.out.printf("\nStudent %d",m+1);
+		System.out.printf("Name :");
+		name=get.next();
+		System.out.printf("Usn:");
+		usn=get.next();
+		System.out.printf("Sem Number :");
+		sem=get.nextInt();
+		
+	}
+}
+
+class test extends student
+{
+	int n;
+	int cieMarks[];
+	int Credits[];
+	Scanner get=new Scanner (System.in);
+	
+	void getTestInfo()
+	{
+		System.out.printf("\n Enter the No of courses:");
+		n=get.nextInt();
+		cieMarks=new int[n];
+		Credits=new int[n];
+		System.out.printf("Enter Course credit and Marks obtained:\n");
+		for(int i=0;i<n;i++)
+		{
+			System.out.printf("\n Course %d:",i+1);
+			System.out.printf("\n Credit and CIE Marks(/50)");
+			Credits[i]=get.nextInt();
+			cieMarks[i]=get.nextInt();
+		}
+	}
+}
+class exam extends test
+{
+	int seeMarks[];
+	Scanner get=new Scanner(System.in);
+	
+	void getExamInfo()
+	{
+		seeMarks=new int[n];
+		System.out.printf("\n SEE Marks(/100) of%d Courses:",n);
+		for(int i=0;i<n;i++)
+		{
+			seeMarks[i]=get.nextInt();
+		}
+	}
+	
+}
+class result extends exam
+{
+	double sgpa=0;
+	int gradePoint(double num)
+	{
+		if(num>=50)
+			return(int)(Math.ceil(num/10));
+		else 
+			if(num>=40)
+				return 4;
+			else 
+				return 0;
+	}
+	void calculation()
+	{
+		double marksSum=0,CreditSum=0;
+		for(int i=0;i<n;i++)
+		{
+			marksSum+=gradePoint((seeMarks[i]/2)+cieMarks[i])*Credits[i];
+			creditSum+=Credits[i];
+		}
+		sgpa=marksSum/creditSum;
+	}
+	void displayInfo(int m)
+	{
+		System.out.printf("\nStudent %d",m+1);
+		System.out.printf("\n Name:%s",name);
+		System.out.printf("Usn:%s",usn);
+		System.out.printf("Sem Number :%d",sem);
+		System.out.printf("Course Credits:");
+		for(int i=0;i<n;i++)
+		{
+			System.out.printf("%d",Credits[i]);
+		}
+		System.out.printf("\n CIE Marks(/50):");
+		for(int i=0;i<n;i++)
+		{
+			System.out.printf("%d",cieMarks[i]);
+		}
+		System.out.printf("\n SEE Marks(/100):");
+		for(int i=0;i<n;i++)
+		{
+			System.out.printf("%d",seeMarks[i]);
+		}
+		System.out.printf("\n SGPA :%.2f",sgpa);
+	}
+}
+class studMain
+{
+	public static void main(String args[])
+	{
+		int noStud;
+		result r[];
+		Scanner get=new Scanner (System.in);
+		System.out.printf("\n Enter the no.of Students:");
+		noStud=get.nextInt();
+		r=new result[noStud];
+		for(int i=0;i<noStud;i++)
+		{
+			r[i]=new result();
+			r[i].getStudInfo(i);
+			r[i].getTestInfo();
+			r[i].getExamInfo();
+			
+		}
+		System.out.printf("All Students Data Saved:");
+		for(int i=0;i<noStud;i++)
+		{
+			r[i].calculation();
+		}
+		System.out.printf("The Student Details are as Follows:\n");
+		for(int i=0;i<noStud;i++)
+		{
+			r[i].displayInfo(i);
+		}
+	}
+}
