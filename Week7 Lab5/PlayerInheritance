@@ -1,0 +1,77 @@
+import java.util.Scanner;
+
+abstract class PLAYER
+{ String name;
+  int matches_played;
+  double average;
+  
+  abstract void cal_average();
+}
+
+class BATSMAN extends PLAYER
+{ int runs_scored; 
+  
+  void getd()
+  { Scanner get=new Scanner(System.in);
+    System.out.println("\nName:");
+    name= get.next();
+    System.out.println("Matches played:");
+	matches_played=get.nextInt();
+	System.out.println("Total runs scored:");
+	runs_scored=get.nextInt();
+  }
+  void cal_average()
+  { average=runs_scored/matches_played; 
+    System.out.println("\nName: "+name);
+	System.out.println("Matches Played: "+matches_played);
+	System.out.println("Total Runs Scored: "+runs_scored);
+	System.out.println("Average Runs Scored: "+average);
+	}
+}
+
+class BOWLER extends PLAYER
+{ int runs_given; 
+  
+  void getd()
+  { Scanner get=new Scanner(System.in);
+    System.out.println("\nName:");
+    name= get.next();
+    System.out.println("Matches played:");
+	matches_played=get.nextInt();
+	System.out.println("Total runs scored:");
+	runs_given=get.nextInt();
+  }
+  void cal_average()
+  { average=runs_given/matches_played; 
+    System.out.println("\nName: "+name);
+	System.out.println("Matches Played: "+matches_played);
+	System.out.println("Total Runs Given: "+runs_given);
+	System.out.println("Average Runs Given: "+average);
+	}
+}	
+
+class playerInhMain
+{ public static void main(String args[])
+  { Scanner get=new Scanner(System.in);
+    int batm,bowlr;
+    System.out.println("Enetr number of batsman");
+	batm=get.nextInt();
+	BATSMAN bats[]=new BATSMAN[batm];
+	System.out.println("Enter the no of bowlers");
+	bowlr=get.nextInt();
+	BOWLER bowl[]=new BOWLER[bowlr];
+	System.out.println("Enter batsman details;\n");
+	
+	for(int i=0;i<batm;i++)
+	{ bats[i]=new BATSMAN();
+      bats[i].getd();	}
+	for(int i=0;i<batm;i++)
+	{ bats[i].cal_average();	}
+    
+	for(int i=0;i<bowlr;i++)
+	{ bowl[i]=new BOWLER();
+      bowl[i].getd();	}
+	for(int i=0;i<batm;i++)
+	{ bowl[i].cal_average(); }
+  }
+}
