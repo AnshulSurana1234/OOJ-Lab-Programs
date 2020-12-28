@@ -1,0 +1,67 @@
+import java.awt.*;
+import java.awt.event.*;
+
+public class MathOp extends Frame implements ActionListener
+{ TextField Num1, Num2, Op, Result;
+  Button Operate;
+  
+  
+  public MathOp()
+  { setLayout(new FlowLayout());
+    Operate = new Button("Apply");
+	
+	Label Num1p = new Label("Num1: ", Label.RIGHT);
+	Label Num2p = new Label("Num2: ", Label.RIGHT);
+	Label Opp = new Label("Operator: ", Label.RIGHT);
+	Num1 = new TextField(10);
+	Num2 = new TextField(10);
+	Op = new TextField(10);
+	Result = new TextField(10);
+	add(Num1p);
+	add(Num1);
+	add(Num2p);
+	add(Num2);
+	add(Opp);
+	add(Op);
+	add(Operate);
+	add(Result);
+	
+	Operate.addActionListener(this);
+	
+	addWindowListener(new WindowAdapter(){ 
+	public void windowClosing(WindowEvent we)
+	{ System.exit(0); }
+	});
+  }
+	public void actionPerformed(ActionEvent ae)
+    { int a,b,r;
+	  String o;
+	  o=Op.getText();
+	  a = Integer.parseInt(Num1.getText());
+	  b = Integer.parseInt(Num2.getText());
+	  
+	  switch(o)
+	  { case "+" : Result.setText(""+(a+b));
+	               break;
+		case "-" : Result.setText(""+(a-b));
+	               break;
+		case "*" : Result.setText(""+(a*b));
+	               break;
+		case "%" : Result.setText(""+(a%b));
+	               break;
+		case "/" : if(b==0)
+				    Result.setText("Invalid");
+				   else
+				    Result.setText(""+(a/b));
+	               break;
+		default  : 
+	  }		
+	}
+  
+public static void main(String args[])
+  { MathOp appwin = new MathOp();
+    appwin.setSize(new Dimension(700,700));
+	appwin.setTitle("Math Operations");
+	appwin.setVisible(true);
+  }
+}
